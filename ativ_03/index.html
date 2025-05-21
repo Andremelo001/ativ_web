@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Minecraft</title>
+</head>
+<body>
+    <div class="container">
+        <div class="inicio">
+            <h1> Minecraft </h1>
+            <p>jogo eletrônico sandbox de sobrevivência</p>
+        </div>
+
+        <div class="menu">
+            <nav class="links">
+                <img src="image/minecraft.png">
+
+                <a href="#jogabilidade"> Jogabilidade</a>
+                <a href="#desenvolvimento"> Desenvolvimento</a>
+                <a href="#impactocultural"> Impacto Cultural</a>
+                <a href="#musica"> Música </a>
+            </nav>
+        </div>
+
+        <div class="main">
+            <div class="conteudo">
+                <h1 id="jogabilidade"> Jogabilidade </h1>
+                <p>
+                    Minecraft é um jogo eletrônico dos gêneros sandbox e sobrevivência que não possui objetivos específicos a serem alcançados, 
+                    permitindo aos jogadores uma grande liberdade de escolha de como jogá-lo. 
+                    A jogabilidade é apresentada numa perspectiva em primeira pessoa por padrão, mas os jogadores têm a opção de selecionarem uma visão em terceira pessoa. 
+                    O mundo aberto de Minecraft é composto de objetos tridimensionais brutos — principalmente cubos e fluidos, sendo comumente chamados de "blocos" — representando vários materiais, como pedra, minérios, troncos de árvores, água e lava. 
+                    A jogabilidade principal gira em torno de pegar e colocar esses objetos, que são organizados em uma grade tridimensional, enquanto os jogadores podem se mover livremente pelo mundo. Os jogadores podem "extrair" blocos e depois colocá-los em outro lugar, 
+                    permitindo que eles construam coisas distintas.
+                </p>
+
+                <figure class="image1">
+                    <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/d/df/Minecraft_explora%C3%A7%C3%A3o.png/405px-Minecraft_explora%C3%A7%C3%A3o.png">
+                </figure>
+
+                <h1 id="desenvolvimento"> Desenvolvimento </h1>
+                <p>
+                    O desenvolvedor sueco Markus "Notch" Persson queria criar um jogo fora dos padrões de jogos comuns e populares de sua época, pois achava mais interessante "criar mundos interativos de trabalho do que criar cenários bonitos", levando o desenvolvimento de Minecraft como um verdadeiro projeto. 
+                    Ele obteve inspirações em vários outros jogos, como Dwarf Fortress, Dungeon Keeper e, mais tarde, Infiniminer. 
+                    Na época, Persson criou um jogo de construção isométrico e tridimensional que seria um cruzamento entre suas inspirações, fazendo alguns protótipos iniciais. 
+                    Infiniminer influenciou fortemente o estilo de jogo, incluindo seu aspecto em primeira pessoa, o estilo visual e seus elementos de construção. 
+                    No entanto, ao contrário de Infiniminer, Persson queria que Minecraft tivesse elementos de RPG.
+                </p>
+
+                <figure class="image2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Markus_Persson_at_GDC_2011.jpg/500px-Markus_Persson_at_GDC_2011.jpg">
+                </figure>
+            </div>
+
+            <div class="conteudo2">
+                <h1 id="impactocultural"> Impacto Cultural </h1>
+                <p>
+                    Redes sociais como YouTube, Facebook e Reddit tiveram um papel fundamental na popularização de Minecraft. 
+                    Uma pesquisa realizada pela Annenberg School for Communication da Universidade da Pensilvânia mostrou que um terço dos jogadores de Minecraft aprenderam sobre o jogo através de vídeos na Internet. 
+                    Em 2010, vídeos relacionados a Minecraft começaram a ganhar influência no YouTube. Esses vídeos geralmente contêm captura de tela do jogo e narração. 
+                    A cobertura comum nos vídeos inclui criações feitas por jogadores, orientações de várias tarefas e paródias de obras da cultura popular. 
+                    Em maio de 2012, foram enviados mais de quatro milhões de vídeos no YouTube relacionados a Minecraft.
+                </p>
+
+                <figure class="image3">
+                    <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/6/63/Minecraft_-_Crafting.png/405px-Minecraft_-_Crafting.png">
+                </figure>
+
+                <h1 id="musica"> Música </h1>
+                <p>
+                    A música e os efeitos sonoros de Minecraft foram produzidos pelo músico alemão Daniel Rosenfeld, mais conhecido como C418. 
+                    Em um painel da MineCon em 2012, Rosenfeld afirmou que ele tem interesse a longo prazo em jogos eletrônicos e esteve envolvido com várias comunidades relacionadas. 
+                    Ele conheceu Markus Persson em um Internet Relay Chat (IRC) e começou a compor músicas para Minecraft quando o jogo estava em seus estágios iniciais, como uma tech demo. 
+                    Os dois compartilharam influências em Aphex Twin e trocaram os projetos um do outro. 
+                    Ambos ficaram impressionados com o trabalho um do outro e, eventualmente, Persson escolheu emparelhar a música de Rosenfeld com seu jogo.
+                </p>
+
+                <figure class="image4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Daniel_Rosenfeld.jpg/330px-Daniel_Rosenfeld.jpg">
+                </figure>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <footer>
+                <button id="toggle-darkmode">Modo Escuro</button>
+
+                <p>&copy; 2025 Meu Site. Todos os direitos reservados.</p>
+                <nav class="footer_links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Contato</a>
+                </nav>
+            </footer>
+        </div>
+    </div>
+    
+</body>
+<script>
+    const btn = document.getElementById('toggle-darkmode');
+    btn.addEventListener('click', () => {
+        document.body.classList.toggle('darkmode');
+    });
+</script>
+
+</html>
