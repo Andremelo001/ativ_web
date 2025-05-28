@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão_03</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* ocupa 100% da altura da tela */
+            width: 100vw;  /* ocupa 100% da largura da tela */
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .buttons button {
+            color: white;
+            height: 30px;
+            border-radius: 3px;
+            background-color: gray;
+            cursor: pointer;
+            box-shadow: 2px 4px 12px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons button:hover{
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="image">
+        <img id="pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg">
+
+        <div class="buttons">
+            <button onclick="remove_number()">Voltar -1</button>
+            <button onclick="add_number()">Adiantar +1</button>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    let cont = 1;
+
+    function add_number(){
+
+        const link = document.getElementById("pokemon");
+
+        cont++;
+
+        if (cont === 101) {
+            cont = 1;
+        }
+
+        link.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${cont}.svg`;
+    }
+
+    function remove_number() {
+        
+        const link = document.getElementById("pokemon");
+
+        cont--;
+
+        if (cont === 0) {
+            cont = 1;
+        }
+
+        link.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${cont}.svg`; 
+    }
+
+</script>
+</html>

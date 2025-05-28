@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão_01</title>
+    <style>
+        * {
+            box-sizing: border-box;
+
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: gray;
+            margin-bottom: 5px;
+        }
+
+        main {
+            display: flex;
+        }
+
+        nav {
+            padding: 10px;
+            background-color: black;
+            flex: 30%;
+        }
+
+        nav a {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: black;
+            padding-top: 17px;
+        }
+
+        section {
+            flex: 70%;
+            padding: 10px;
+            background-color: wheat;
+        }
+
+        section p {
+            padding-bottom: 5px;
+        }
+
+        .image1 {
+            width: 250px;
+            height: 100px;
+            background-color: black;
+        }
+
+        .image2 {
+            width: 250px;
+            height: 100px;
+            background-color: black;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: gainsboro;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        footer a, p {
+            margin: 0;
+        }
+
+        @media (max-width: 400px) {
+            main {
+                flex-direction: column;
+            }
+        }
+        
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Desenvolvimento de Software WEB</h1>
+
+    </header>
+
+    <main>
+        <nav>
+            <a href="">Link1</a>
+            <a href="">Link2</a>
+            <a href="">Link3</a>
+            <a href="">Link4</a>
+        </nav>
+
+        <section>
+            <h1>Introdução ao HTML</h1>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptas, mollitia illo dolore consequuntur cum placeat. Aspernatur id animi a dolorem architecto aliquid ipsa commodi excepturi. Distinctio minima nostrum fugiat.</p>
+
+            <div class="image1"></div>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi accusantium beatae magnam animi earum rem ipsum qui maxime ratione modi odit laudantium dolore, provident dolores quod ipsa assumenda nulla numquam!</p>
+
+            <div class="image2"></div>
+
+        </section>
+    </main>
+
+    <footer>
+            <a href="">fulanodetal@ufc.br</a>
+            <p>2025.1</p>
+            <p>Todos os direitos reservados</p>
+    </footer>
+    
+</body>
+</html>

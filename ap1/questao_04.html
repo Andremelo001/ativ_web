@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão_04 e Questão_05</title>
+    <style>
+        .notification-card {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 2px 4px 16px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 10px;
+        }
+
+        button {
+            background-color: white;
+            border: 0px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+            border-radius: 6px;
+            height: 20px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-left: 5px;
+        }
+
+
+        .card-content h3, .card-content p {
+            margin: 1px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="card" class="notification-card">
+        <div class="card-header">
+            <button onclick="close_card()" class="close-btn">X</button>
+        </div>
+
+        <div class="card-content">
+            <h3>Novidade!</h3>
+            <p>Confira nossos novos produtos.</p>
+        </div>
+    </div>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+    
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ipsam unde facere eos similique aspernatur maiores, rem, necessitatibus pariatur voluptatem neque! Dolorum, assumenda et debitis illum blanditiis eligendi laborum rerum.</p>
+
+</body>
+
+<script>
+    function close_card(){
+
+        const id_card = document.getElementById("card")
+
+        id_card.classList.add("hidden");
+
+    }
+</script>
+</html>
