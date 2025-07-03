@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        .tabela {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .acima-media {
+            background-color: #ffff99;
+        }
+
+        .maior_relacao {
+            background-color: red;
+        }
+
+        .menor_relacao{
+            background-color: green;
+        }
+
+        .style_brasil {
+            background-color: blue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: grey;
+            width: 400px;
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .card p {
+            color: white;
+            margin: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <title>Api COVID_Países</title>
+</head>
+<body>
+
+    <h1>Casos de Covid</h1>
+
+
+    <div class="container">
+        <div class="card">
+            <p>Informações:</p>
+            <p>linhas amarelas = número de falecimentos maiores que a média de falecimentos</p>
+            <p>linha vermelha = país com a maior relação Casos/Falecimentos</p>
+            <p>linha azul = Identificando o Brasil</p>
+        </div>
+
+    </div>
+
+    <div class="tabela">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome do País</th>
+                    <th>Número de Casos</th>
+                    <th>Confirmações</th>
+                    <th>Número de falecimentos</th>
+                    <th>Recuperados</th>
+                </tr>
+            </thead>
+            <tbody id="paises">
+                
+            </tbody>
+        </table>
+    </div>
+
+    
+    <script>
+        async function consumir_api() {
+            let response = await fetch("https://covid19-brazil-api.now.sh/api/report/v1/countries");
+
+            let json = await response.json();
+
+            // média de casos
+            let media_casos = media_casos_func(json.data);
+
+            // média de suspeitos
+            let media_confirmados = media_confirmados_func(json.data);
+
+            //media falecidos
+            let media_falecidos = media_falecidos_func(json.data);
+
+            let maiorRelacao = -Infinity;
+
+            let menorRelacao = Infinity;
+
+            let paisMaiorRelacao = null;
+
+            let paisMenorRelacao = null;
+
+            
+            for (let pais of json.data) {
+                const relacao = pais.cases / pais.deaths;
+                
+                // Verifica maior relação
+                if (relacao > maiorRelacao) {
+                    maiorRelacao = relacao;
+                    paisMaiorRelacao = pais.country;
+                }
+                
+                // Verifica menor relação
+                if (relacao < menorRelacao) {
+                    menorRelacao = relacao;
+                    paisMenorRelacao = pais.country;
+                }
+            }
+
+
+            const paisesTBody = document.getElementById("paises");
+            paisesTBody.innerHTML = "";
+
+            for(const paises of json.data){
+                const linha = document.createElement("tr");
+
+                linha.innerHTML = `
+                    <td>${paises.country}</td>
+                    <td>${paises.cases}</td>
+                    <td>${paises.confirmed}</td>
+                    <td>${paises.deaths}</td>
+                    <td>${paises.recovered}</td>
+                `;
+
+                //adiciona fundo amarelo as linhas com número de falecimentos acima de media de falecidos 
+                if(paises.deaths > media_falecidos){
+                    linha.classList.add("acima-media");
+                }
+
+                //adiciona fundo vermelho a linha que contem a maior relação casos falecimento
+                if(paises.country == paisMaiorRelacao){
+                    linha.classList.add("maior_relacao");
+                }
+
+                if(paises.country == paisMenorRelacao){
+                    linha.classList.add("menor_relacao");
+                }
+
+                if(paises.country == "Brazil"){
+                    linha.classList.add("style_brasil")
+                }
+
+
+                paisesTBody.appendChild(linha);
+            }
+
+            const linhaMediaCasos = document.createElement("tr");
+            linhaMediaCasos.innerHTML = `
+                <td colspan="4"><strong>Média de casos</strong></td>
+                <td><strong>${media_casos.toFixed(2)}</strong></td>
+            `;
+            paisesTBody.appendChild(linhaMediaCasos);
+
+            const linhaMediaConfirmados = document.createElement("tr");
+            linhaMediaConfirmados.innerHTML = `
+                <td colspan="4"><strong>Média de Confirmados</strong></td>
+                <td><strong>${media_confirmados.toFixed(2)}</strong></td>
+            `;
+            paisesTBody.appendChild(linhaMediaConfirmados);
+
+            const linhaMediaFalecidos = document.createElement("tr");
+            linhaMediaFalecidos.innerHTML = `
+                <td colspan="4"><strong>Média de Falecidos</strong></td>
+                <td><strong>${media_falecidos.toFixed(2)}</strong></td>
+            `;
+            paisesTBody.appendChild(linhaMediaFalecidos)
+        }
+
+        function media_casos_func(paises){
+            let totalCasos = 0;
+
+            for (let pais of paises) {
+                totalCasos += pais.cases;
+            }
+
+            return totalCasos / paises.length;
+        }
+
+        function media_confirmados_func(paises) {
+            let totalConfirmados = 0;
+
+            for(let pais of paises) {
+                totalConfirmados += pais.confirmed;
+            }
+
+            return totalConfirmados / paises.length;
+        }
+
+        function media_falecidos_func(paises) {
+            let totalFalecidos = 0;
+
+            for (let pais of paises) {
+                totalFalecidos += pais.deaths;
+            }
+
+            return totalFalecidos / paises.length;
+        }
+
+consumir_api();
+    </script>
+</body>
+</html>
