@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 1</title>
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .infos {
+            width: 268.26px;
+            height: 200px;
+            background-color: grey;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .infos h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .infos p {
+            padding-left: 10px;
+            color: white;
+        }
+
+        table {
+            border: 1px solid black;
+        }
+
+        .acimaMedia {
+            background-color: blue;
+        }
+
+        .caro {
+            background-color: red;
+        }
+
+        .barato {
+            background-color: green;
+        } 
+
+    </style>
+</head>
+<body>
+
+    <div class="infos">
+        <h1>Informações</h1>
+        <p>linha azul = acima da media</p>
+        <p>linha vermelha = Produto mais caro</p>
+        <p>linha verde = Produto mais barato</p>
+    </div>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>TIPO</th>
+                    <th>PREÇO</th>
+                </tr>
+            </thead>
+
+            <tbody id="produtos">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        function minhaPromisse() {
+            return new Promise(
+                (resolve, reject) => {
+                    setTimeout(
+                        () => {
+                            const number = Math.floor(Math.random() * 100);
+
+                            console.log("O numero gerado é:" + number);
+
+                            if(number % 2 === 0) {
+                                const itens = [
+                                    { ID: 1, NOME: "Camiseta", TIPO: "Vestuário", PRECO: 49.90 },
+                                    { ID: 2, NOME: "Tênis", TIPO: "Calçado", PRECO: 199.90 },
+                                    { ID: 3, NOME: "Notebook", TIPO: "Eletrônico", PRECO: 3499.00 },
+                                    { ID: 4, NOME: "Mochila", TIPO: "Acessório", PRECO: 89.90 },
+                                    { ID: 5, NOME: "Fone de Ouvido", TIPO: "Eletrônico", PRECO: 129.90 },
+                                    { ID: 6, NOME: "Livro", TIPO: "Cultural", PRECO: 39.90 },
+                                    { ID: 7, NOME: "Caneca", TIPO: "Utilidade", PRECO: 19.90 },
+                                    { ID: 8, NOME: "Mouse Gamer", TIPO: "Eletrônico", PRECO: 149.90 },
+                                    { ID: 9, NOME: "Bicicleta", TIPO: "Esporte", PRECO: 899.00 },
+                                    { ID: 10, NOME: "Relógio", TIPO: "Acessório", PRECO: 299.90 }
+                                ];
+                                resolve(itens); 
+                
+                            }else {
+                                reject("error");
+                            }
+
+                        }, 4000
+                    );
+                }
+            );
+        }
+
+        async function consumirPromisse() {
+
+            const response = await minhaPromisse();
+
+            const mediaPrecos = media(response);
+
+            const menorPreco = barato(response);
+
+            const maiorPreco = caro(response);
+
+            let table_produtos = document.getElementById("produtos")
+            table_produtos.innerHTML = "";
+
+            for(let produto of response) {
+                const linha = document.createElement("tr");
+
+                linha.innerHTML = `
+                <td>${produto.ID}</td>
+                <td>${produto.NOME}</td>
+                <td>${produto.TIPO}</td>
+                <td>${produto.PRECO}</td>
+                `;
+
+                table_produtos.appendChild(linha);
+
+                if(produto.PRECO > mediaPrecos) {
+                    linha.classList.add("acimaMedia");
+                }
+
+                if(produto.NOME == maiorPreco) {
+                    linha.classList.add("caro");
+                }
+
+                if(produto.NOME == menorPreco) {
+                    linha.classList.add("barato");
+                }
+            }
+
+            const linha_media = document.createElement("tr");
+            linha_media.innerHTML = `
+            <td colspan="3">Media do Preço</td>
+            <td>${mediaPrecos.toFixed(2)}</td>
+            `;
+
+            table_produtos.appendChild(linha_media);
+
+            const linhaMenorPreco = document.createElement("tr");
+            linhaMenorPreco.innerHTML = `
+            <td colspan="3">Menor Preço</td>
+            <td>${menorPreco}</td>
+            `;
+
+            table_produtos.appendChild(linhaMenorPreco);
+
+            const linhaMaiorPreco = document.createElement("tr");
+            linhaMaiorPreco.innerHTML = `
+            <td colspan="3">Maior Preço</td>
+            <td>${maiorPreco}</td>
+            `;
+
+            table_produtos.appendChild(linhaMaiorPreco);
+
+        }
+
+        function media(response) {
+            let total = 0;
+
+            for(let produto of response) {
+                total += produto.PRECO;
+            }
+
+            return media = total / response.length;
+        }
+
+        function barato(response){
+            let barato = Infinity;
+            let name_produto = "";
+
+            for(let produto of response){
+                if(produto.PRECO < barato){
+                    barato = produto.PRECO;
+                    name_produto = produto.NOME;
+                }
+            }
+
+            return name_produto;
+        }
+
+        function caro(response){
+            let caro = -Infinity;
+            let name_produto = "";
+
+            for(let produto of response){
+                if(produto.PRECO > caro){
+                    caro = produto.PRECO;
+                    name_produto = produto.NOME;
+                }
+            }
+
+            return name_produto;
+        }
+
+        consumirPromisse();
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 2</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;flex-direction: column;
+        }
+
+        .card {
+            background-color: palevioletred;
+            border-radius: 10px;
+            width: 466px;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+
+        .card h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .card p {
+            padding-left: 10px;
+            color: white;
+        }
+
+
+        table, tr, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Jogo da Memória</h1>
+
+        <p id="contagem">Pontos: </p>
+    </div>
+
+    <table id="jogo-da-velha">
+        <tbody>
+            <tr>
+                <td> <img src="https://i.pinimg.com/736x/57/13/9e/57139eb96b731a3014076f45842148c5.jpg"></td>
+                <td> <img src="https://i.pinimg.com/736x/05/d6/c4/05d6c4309429cb9cb320a26d072488dc.jpg"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/ilustracao-vetorial-de-um-pacote-de-adesivos-de-gatos-kawii-de-desenho-animado-com-varias-expressoes-bonitas_680973-702.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/desenho-de-coelho-branco-bonito-em-pe_188253-9668.jpg?semt=ais_hybrid&w=740"></td>
+            </tr>
+            <tr>
+                <td> <img src="https://img.freepik.com/vetores-premium/ilustracao-vetorial-de-um-pacote-de-adesivos-de-gatos-kawii-de-desenho-animado-com-varias-expressoes-bonitas_680973-702.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://i.pinimg.com/736x/05/d6/c4/05d6c4309429cb9cb320a26d072488dc.jpg"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/papagaio-bonito-estilo-plano-de-moda-isolado-passaro-tropical-colorido-ilustracao-vetorial_1103493-2391.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/desenho-de-coelho-branco-bonito-em-pe_188253-9668.jpg?semt=ais_hybrid&w=740"></td>
+            </tr>
+            <tr>
+                <td> <img src="https://i.pinimg.com/736x/57/13/9e/57139eb96b731a3014076f45842148c5.jpg"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/papagaio-bonito-estilo-plano-de-moda-isolado-passaro-tropical-colorido-ilustracao-vetorial_1103493-2391.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/ilustracao-de-icone-vetorial-de-desenho-animado-de-elefante-africano-em-fundo-branco_1119746-804.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTIBzc6JOd9BxQX1peuYh7QvCgZ1xPyHRR_Q&s"></td>
+            </tr>
+            <tr>
+                <td> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTIBzc6JOd9BxQX1peuYh7QvCgZ1xPyHRR_Q&s"></td>
+                <td> <img src="https://img.freepik.com/vetores-gratis/personagem-de-desenho-animado-de-leao-fofo_1308-133566.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://img.freepik.com/vetores-premium/ilustracao-de-icone-vetorial-de-desenho-animado-de-elefante-africano-em-fundo-branco_1119746-804.jpg?semt=ais_hybrid&w=740"></td>
+                <td> <img src="https://img.freepik.com/vetores-gratis/personagem-de-desenho-animado-de-leao-fofo_1308-133566.jpg?semt=ais_hybrid&w=740"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const todasImagens = document.querySelectorAll("#jogo-da-velha img");
+        const contagemPontos = document.getElementById("contagem")
+        let clicados = [];
+        let bloqueado = false;
+        let contagem = 0;
+        
+        todasImagens.forEach(img => {
+            img.dataset.original = img.src;
+            img.src = "https://i.pinimg.com/474x/1d/ac/58/1dac581a6c97ab74d471fb5a69270658.jpg";
+        });
+        
+        todasImagens.forEach(img => {
+            img.parentElement.addEventListener("click", () => {
+                if(bloqueado || clicados.includes(img)) return;
+
+                img.src = img.dataset.original;
+                clicados.push(img);
+
+                if(clicados.length === 2) {
+                    verificar();
+                }
+            });
+        });
+
+        function verificar() {
+            const [img1, img2] = clicados;
+            if(img1.dataset.original === img2.dataset.original) {
+                contagem++;
+                clicados = [];
+                contagemPontos.innerHTML = `Pontos: ${contagem}`;
+            } else {
+                bloqueado = true;
+                setTimeout(() => {
+                    img1.src = "https://i.pinimg.com/474x/1d/ac/58/1dac581a6c97ab74d471fb5a69270658.jpg";
+                    img2.src = "https://i.pinimg.com/474x/1d/ac/58/1dac581a6c97ab74d471fb5a69270658.jpg";
+                    clicados = [];
+                    bloqueado = false;
+                }, 1000);
+            }
+        }
+
+    </script>
+</body>
+</html>
